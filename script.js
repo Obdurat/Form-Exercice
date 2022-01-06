@@ -21,9 +21,25 @@ window.onload = () => {
 
   const closeSuccess = document.getElementById('close-success');
 
+  const inputs = document.getElementsByTagName("input");
+
   let childs = 0;  
 
   let currentYear = new Date().getFullYear();
+
+  while (inputs.length > childs) {
+    inputs[childs].addEventListener("blur", removeDanger);
+    childs += 1;    
+  } childs = 0;
+
+  function removeDanger(event) {
+    if (event.target.type !== "radio" && event.target.value === "") {
+      // Se o valor do input for vazio adiciona classe de erro e sai da função;
+      event.target.classList.add("is-danger");           
+    } else if (event.target.value !== "") {
+      event.target.classList.remove("is-danger");
+    }      
+  }
 
   closeSuccess.addEventListener("click", () => {
     // Fecha notificação;
@@ -33,12 +49,8 @@ window.onload = () => {
   inputCpf.addEventListener("blur", (event) => {
     var Soma;
     var Resto;
-    Soma = 0;    
-    if (event.target.value === "") {
-      // Se o valor do input for vazio adiciona classe de erro e sai da função;
-      event.target.classList.add("is-danger");
-      return;   
-    }
+    Soma = 0;   
+    
     if (event.target.value == "00000000000") {
       // Se o CPF inserido for "00000000000" mostra mensagem de erro, zera o valor e sai da função;
       alert("CPF Inválido");
@@ -128,7 +140,7 @@ window.onload = () => {
     // Cancela a função do botão de envio for formulário;
     event.preventDefault();
     // Array com todos os campos input;
-    const inputs = document.getElementsByTagName("input");
+    // const inputs = document.getElementsByTagName("input");
     // Conteudo da caixa Modal
     modalContent.innerHTML = "";
     // Checa se existe alguem campo input vazio, se true adiciona classe de erro e sai da função;

@@ -9,8 +9,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="ico/edit.png">
+    <link rel="stylesheet" href="styles.css" />    
+    <link rel="stylesheet" href="Font-Awesome/css/all.min.css" />
+    <link rel="icon" href="ico/edit.png" />
   </head>
   <body>
     <main id="outer-box" class="">
@@ -18,8 +19,13 @@
       <form id="inner-box1" class="box">
         <fieldset class="box" id="general">
           <div class="field">
-            <label class="label" for="input-name"> Nome Completo </label>
             <div class="control">
+              <h1 class="title is-3 has-text-centered">Dados Pessoais</h1>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="input-name"> Nome Completo </label>
+            <div class="control has-icons-left">
               <input
                 placeholder="Seu Nome"
                 class="input"
@@ -28,11 +34,14 @@
                 id="input-name"
                 maxlength="40"
               />
+              <span class="icon is-small is-left">
+                <i class="fas fa-address-card"></i>
+              </span>
             </div>
           </div>
           <div class="field">
             <label class="label" for="input-email"> Email </label>
-            <div class="control">
+            <div class="control has-icons-left">
               <input
                 placeholder="Email"
                 class="input"
@@ -41,12 +50,15 @@
                 id="input-email"
                 maxlength="50"
               />
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
             </div>
           </div>
           <div class="field">
             <label class="label" for="input-name"> CPF </label>
-            <div class="control">
-              <input              
+            <div class="control has-icons-left">
+              <input
                 placeholder="CPF"
                 class="input"
                 type="text"
@@ -54,11 +66,14 @@
                 id="input-cpf"
                 maxlength="14"
               />
+              <span class="icon is-small is-left">
+                <i class="fas fa-id-card-alt"></i>
+              </span>
             </div>
           </div>
           <div class="field">
             <label class="label" for="input-adress"> Endereço </label>
-            <div class="control">
+            <div class="control has-icons-left">
               <input
                 placeholder="Endereço"
                 class="input"
@@ -67,11 +82,14 @@
                 id="input-adress"
                 maxlength="200"
               />
+              <span class="icon is-small is-left">
+                <i class="fas fa-mail-bulk"></i>
+              </span>
             </div>
           </div>
           <div class="field">
             <label class="label" for="input-city"> Cidade </label>
-            <div class="control">
+            <div class="control has-icons-left">
               <input
                 placeholder="Cidade"
                 class="input"
@@ -80,21 +98,27 @@
                 id="input-city"
                 maxlength="28"
               />
+              <span class="icon is-small is-left">
+                <i class="fas fa-city"></i>
+              </span>              
             </div>
           </div>
           <div class="field">
             <label class="label" for="input-state"> Estado </label>
-            <div class="control">
+            <div class="control has-icons-left">
               <div class="select">
                 <select class="" name="Estado" id="input-state"></select>
               </div>
+              <span class="icon is-small is-left">
+                <i class="fas fa-flag"></i>
+              </span>  
             </div>
           </div>
           <div class="field">
-            <div class="control">
+            <div class="control icon-text">
               <input
-              placeholder="Moradia"
-                checked
+              checked
+                placeholder="Moradia"                
                 name="household"
                 type="radio"
                 required
@@ -102,9 +126,16 @@
                 class="radio"
                 value="Casa"
               />
+              <span class="icon">
+                <i class="fas fa-home"></i>
+              </span>
               <label class="radio" for="household1"> Casa </label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control icons-text">
               <input
-              placeholder="Moradia"
+                placeholder="Moradia"
                 name="household"
                 type="radio"
                 id="household2"
@@ -112,14 +143,24 @@
                 class="radio"
                 value="Apartamento"
               />
+              <span class="icon">
+                <i class="fas fa-building"></i>
+              </span>
               <label class="radio" for="household2"> Apartamento </label>
             </div>
           </div>
         </fieldset>
         <fieldset class="box" id="resume">
           <div class="field">
-            <label class="label" for="profession">Ultimo Cargo </label>
             <div class="control">
+              <h1 class="title is-3 has-text-centered">
+                Dados do último trabalho
+              </h1>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="profession">Último cargo </label>
+            <div class="control has-icons-left">
               <input
                 placeholder="Ultimo Cargo"
                 class="input"
@@ -128,13 +169,16 @@
                 name="profession"
                 maxlength="40"
               />
+              <span class="icon is-small is-left">
+                <i class="fas fa-suitcase-rolling"></i>
+              </span>
             </div>
           </div>
           <div class="field">
             <label class="label" for="profession-description"
               >Descrição do cargo
             </label>
-            <div class="control">
+            <div class="control has-icons-left">
               <input
                 placeholder="Descrição do Cargo"
                 class="input"
@@ -143,26 +187,33 @@
                 id="profession-description"
                 maxlength="500"
               />
+              <span class="icon is-small is-left">
+                <i class="fas fa-paste"></i>
+              </span>
             </div>
           </div>
           <div class="field">
             <label class="label" for="initial-date"
-              >Data de Inicio no ultimo emprego
+              >Data de Inicio no último emprego
             </label>
-            <div class="control">
+            <div class="control has-icons-left">
               <input
-              style="width: 21%;"
+                style="width: 21%"
                 class="input mr-10"
                 type="text"
                 name="initial-date"
                 id="initial-date"
                 maxlength="10"
-                placeholder="Data Ultimo Emprego"
+                placeholder="Data último emprego"
               />
+              <span class="icon is-small is-left">
+                <i class="far fa-calendar-alt"></i>
+              </span>
             </div>
           </div>
           <div class="field">
-            <div class="control">
+            <label  class="label" for="last-job">Descreva seu último cargo</label>
+            <div class="control">              
               <textarea
                 placeholder="Descreva seu último cargo"
                 class="textarea"
@@ -171,34 +222,45 @@
                 cols="30"
                 rows="10"
                 maxlength="1000"
-              ></textarea>
+              ></textarea>              
             </div>
           </div>
         </fieldset>
-        <button class="button is-success" type="submit" id="send-btn">Enviar</button>
-        <button class="button is-warning" type="reset" id="reset-btn">Limpar</button>
+        <button class="button is-success" type="submit" id="send-btn">
+          Enviar
+        </button>
+        <button class="button is-warning" type="reset" id="reset-btn">
+          Limpar
+        </button>
       </form>
     </main>
     <div id="modal-card" class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">
-            <p class="modal-card-title">Cheque suas Informações!</p>
-            <button id="modal-btn-close" class="delete" aria-label="close"></button>
-          </header>
-          <section id="modal-content" class="modal-card-body">
-            <!-- Content ... -->
-          </section>
-          <footer class="modal-card-foot">
-            <button id="modal-btn-save" class="button is-success">Enviar</button>
-            <button id="modal-btn-cancel" class="button">Cancelar</button>
-          </footer>
-        </div>
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Cheque suas Informações!</p>
+          <button
+            id="modal-btn-close"
+            class="delete"
+            aria-label="close"
+          ></button>
+        </header>
+        <section id="modal-content" class="modal-card-body">
+          <!-- Content ... -->
+        </section>
+        <footer class="modal-card-foot">
+          <button id="modal-btn-save" class="button is-success">Enviar</button>
+          <button id="modal-btn-cancel" class="button">Cancelar</button>
+        </footer>
       </div>
-      <div id="success-container" class="navbar is-fixed-bottom notification is-success has-text-centered" >
-        <button id="close-success"class="delete"></button>
-        Formulario Enviado com Sucesso!!        
-      </div>     
+    </div>
+    <div
+      id="success-container"
+      class="navbar is-fixed-bottom notification is-success has-text-centered"
+    >
+      <button id="close-success" class="delete"></button>
+      Formulario Enviado com Sucesso!!
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
