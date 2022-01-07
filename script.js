@@ -25,21 +25,7 @@ window.onload = () => {
 
   let childs = 0;  
 
-  let currentYear = new Date().getFullYear();
-
-  while (inputs.length > childs) {
-    inputs[childs].addEventListener("blur", removeDanger);
-    childs += 1;    
-  } childs = 0;
-
-  function removeDanger(event) {
-    if (event.target.type !== "radio" && event.target.value === "") {
-      // Se o valor do input for vazio adiciona classe de erro e sai da função;
-      event.target.classList.add("is-danger");           
-    } else if (event.target.value !== "") {
-      event.target.classList.remove("is-danger");
-    }      
-  }
+  let currentYear = new Date().getFullYear();  
 
   closeSuccess.addEventListener("click", () => {
     // Fecha notificação;
@@ -94,7 +80,7 @@ window.onload = () => {
     // Array vazia para formatação do CPF;
 
     for (let index = 0; index < event.target.value.length; index += 1) {
-      // Percorre a CPF e adiciona cada numero 1 por 1 no cpfFormatter
+      // Percorre a CPF e adiciona cada numero 1 por 1 no cpfFormater
       cpfFormater.push(event.target.value[index]);      
     }
     event.target.value = "";
@@ -103,9 +89,19 @@ window.onload = () => {
     cpfFormater.splice(7, 0, ".");
     cpfFormater.splice(11, 0, "-");
     // Formata corretamente o CPF
-    event.target.value = `${cpfFormater.join("")}`;
-    // insire o CPF formatado no input;
-});    
+    if (!isNaN(cpfFormater[0])) {
+      event.target.value = `${cpfFormater.join("")}`;
+      // insire o CPF formatado no input;
+    }
+});
+
+inputCpf.addEventListener("keyup", (event) => {
+  console.log(event.keyCode);
+  if (event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 96 || event.keyCode > 105) {
+    event.target.value = event.target.value.slice(0, -1);
+    return;
+  }
+});
 
   date.addEventListener("keyup", () => {
     // Checa se o dia inserido é maior que 31 ou menor/igual à 0;
@@ -138,10 +134,8 @@ window.onload = () => {
 
   sendBtn.addEventListener("click", (event) => {
     // Cancela a função do botão de envio for formulário;
-    event.preventDefault();
-    // Array com todos os campos input;
-    // const inputs = document.getElementsByTagName("input");
-    // Conteudo da caixa Modal
+    event.preventDefault();    
+    // Zera o conteudo da caixa Modal antes de adicionar novos elementos;
     modalContent.innerHTML = "";
     // Checa se existe alguem campo input vazio, se true adiciona classe de erro e sai da função;
     for (let i = 0; i < inputs.length; i += 1) {
@@ -151,22 +145,26 @@ window.onload = () => {
           window.confirm("Preencha Todos os campos Obrigatórios!");
           return;
         }
-      } 
+      }      
       // Insere o Estado na posição 10 do conteudo da caixa modal;
       if (modalContent.children.length == 10) {
         modalContent.appendChild(document.createElement("h3")).innerText = `${state.name}:`;
-        modalContent.appendChild(document.createElement("p")).innerText = `${state.value}`;        
+        modalContent.appendChild(document.createElement("p")).innerText = `${state.value}`;
+        // Se o input casa estiver checado e for do tipo radio, Insere titulo(placeholder do input) e paragrafo(valor do input) no conteudo da caixa modal;
+        if (inputs[i].checked && inputs[i].type == "radio") {
+          modalContent.appendChild(document.createElement("h3")).innerText = `${inputs[i].placeholder}:`;
+          modalContent.appendChild(document.createElement("p")).innerText = `${inputs[i].value}`;
+          // Se o apartamento estiver checado e for do tipo radio, Insere titulo(placeholder do input) e paragrafo(valor do input) no conteudo da caixa modal;                   
+        } else if (inputs[i + 1].checked && inputs[i + 1].type == "radio") {
+          modalContent.appendChild(document.createElement("h3")).innerText = `${inputs[i + 1].placeholder}:`;
+          modalContent.appendChild(document.createElement("p")).innerText = `${inputs[i + 1].value}`;                   
+        }              
       }
       // Se o input não for do tipo "radio" Insere titulo(placeholder do input) e paragrafo(valor do input) no conteudo da caixa modal; 
       else if (inputs[i].type !== "radio") {
         modalContent.appendChild(document.createElement("h3")).innerText = `${inputs[i].placeholder}:`;
         modalContent.appendChild(document.createElement("p")).innerText = `${inputs[i].value}`;
-      }
-      // Se o input for do tipo "radio" e estiver checado, Insere titulo(placeholder do input) e paragrafo(valor do input) no conteudo da caixa modal; 
-      else if (inputs[i].type == "radio" && inputs[i].checked) {
-        modalContent.appendChild(document.createElement("h3")).innerText = `${inputs[i].placeholder}:`;
-        modalContent.appendChild(document.createElement("p")).innerText = `${inputs[i].value}`;
-      }
+      }      
       // Insere classe nos titulos criados no conteudo da caixa modal;
       for (let j = 0; j < modalContent.children.length; j += 2) {
         modalContent.children[j].className += "subtitle is-5 mb-0 mt-2";
