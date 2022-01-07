@@ -98,7 +98,7 @@ window.onload = () => {
 inputCpf.addEventListener("keyup", (event) => {
   console.log(event.keyCode);
   if (event.keyCode < 48 || event.keyCode > 57 && event.keyCode < 96 || event.keyCode > 105) {
-    event.target.value = event.target.value.slice(0, -1);
+    event.target.value = "";
     return;
   }
 });
